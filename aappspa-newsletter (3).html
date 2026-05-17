@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AAPPSPA: The No-Show Chronicles, Vol. 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Abril+Fatface&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:        #1c1c24;
+    --paper:      #f4f1ec;
+    --cream:      #e8e3d8;
+    --accent:     #9b7d5a;
+    --blue-light: #b8cdd8;
+    --blue-mid:   #6a8fa5;
+    --blue-dark:  #4e6472;
+    --header-bg:  #1c2230;
+    --mid:        #4a5260;
+    --rule:       #1c2230;
+    --light-rule: #b8c4ca;
+  }
+
+  body {
+    background: #8a9aa8;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    color: var(--ink);
+    padding: 24px;
+  }
+
+  .newspaper {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--paper);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    box-shadow: 0 4px 40px rgba(0,0,0,0.4);
+  }
+
+  /* MASTHEAD */
+  .masthead {
+    background: var(--header-bg);
+    text-align: center;
+    padding: 18px 32px 16px;
+  }
+  .masthead-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #7a94a8;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2e3d4e;
+    margin-bottom: 12px;
+  }
+  .masthead-title {
+    font-family: 'Abril Fatface', serif;
+    font-size: 66px;
+    line-height: 1;
+    color: #f4f1ec;
+    letter-spacing: 0.03em;
+  }
+  .masthead-sub {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 7px;
+  }
+  .masthead-rule {
+    height: 3px;
+    background: linear-gradient(to right, #2e3d4e 25%, var(--accent) 25% 75%, #2e3d4e 75%);
+    margin-top: 14px;
+  }
+
+  .kicker-bar {
+    background: var(--rule);
+    color: var(--paper);
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 0;
+  }
+
+  .body-wrap { padding: 28px 36px 40px; }
+
+  /* COLUMNS */
+  .page-columns {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 0 18px;
+    margin-top: 16px;
+  }
+  .col-divider { background: var(--light-rule); width: 1px; }
+  .col { padding: 0 2px; }
+
+  /* TYPE */
+  .section-headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1.15;
+    color: var(--ink);
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 12.5px;
+    line-height: 1.78;
+    margin-bottom: 10px;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .dropcap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 58px;
+    float: left;
+    line-height: 0.8;
+    margin: 4px 7px 0 0;
+    color: var(--header-bg);
+  }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    border-top: 3px solid var(--rule);
+    border-bottom: 3px solid var(--rule);
+    padding: 12px 6px;
+    margin: 14px 0;
+    text-align: center;
+  }
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14.5px;
+    line-height: 1.5;
+    text-align: center;
+    margin: 0;
+  }
+  .pull-quote .attribution {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-top: 8px;
+    display: block;
+  }
+
+  hr { border: none; border-top: 1px solid var(--light-rule); margin: 12px 0; }
+  hr.thick { border-top: 2px solid var(--rule); }
+
+  /* BOXES */
+  .box {
+    background: var(--blue-light);
+    border-top: 3px solid var(--blue-dark);
+    padding: 12px 14px;
+    margin: 10px 0;
+  }
+  .box-dark {
+    background: var(--blue-dark);
+    padding: 14px 16px;
+    margin: 10px 0;
+  }
+  .box-dark p { color: #e8f0f4; }
+  .box-dark ul li { color: #e8f0f4; }
+  .box-accent {
+    background: var(--accent);
+    padding: 14px 16px;
+    margin: 10px 0;
+  }
+  .box-accent p { color: #f5e8d8; }
+  .box-accent li { color: #f5e8d8; }
+
+  .box-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--ink);
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    padding-bottom: 5px;
+  }
+  .box-dark .box-title  { color: #d8eaf4; border-bottom-color: rgba(255,255,255,0.2); }
+  .box-accent .box-title { color: #f5e8d8; border-bottom-color: rgba(255,255,255,0.25); }
+
+  /* LISTS */
+  ul { padding-left: 0; list-style: none; margin-bottom: 8px; }
+  ul li {
+    font-size: 12px;
+    line-height: 1.65;
+    padding: 3px 0 3px 16px;
+    position: relative;
+    color: var(--ink);
+  }
+  ul li::before {
+    content: '◆';
+    font-size: 7px;
+    position: absolute;
+    left: 0;
+    top: 6px;
+    color: var(--blue-dark);
+  }
+  .box-dark ul li::before  { color: #a8c8d8; }
+  .box-accent ul li::before { color: #f5e8d8; }
+
+  .signature {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--accent);
+    text-align: right;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--light-rule);
+  }
+
+  .section-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--blue-dark);
+    display: inline-block;
+    padding: 2px 8px;
+    margin-bottom: 6px;
+  }
+
+  .ornament {
+    text-align: center;
+    color: var(--blue-mid);
+    font-size: 16px;
+    margin: 8px 0;
+    letter-spacing: 8px;
+  }
+
+  .footer {
+    border-top: 4px double var(--rule);
+    margin-top: 28px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer p { font-size: 10px; color: var(--mid); margin: 0; }
+</style>
+</head>
+<body>
+<article class="newspaper">
+
+  <header class="masthead">
+    <div class="masthead-meta">
+      <span>Vol. 1</span>
+      <span>Bi-Monthly Leadership Brief</span>
+      <span>Spring 2026</span>
+    </div>
+    <div class="masthead-title">AAPPSPA</div>
+    <div class="masthead-sub">The No-Show Chronicles &nbsp;·&nbsp; Private Practice Edition</div>
+    <div class="masthead-rule"></div>
+  </header>
+
+  <div class="kicker-bar">
+    Stronger Business Practices &nbsp;·&nbsp; Compliance &amp; Sustainability &nbsp;·&nbsp; A Connected Professional Community
+  </div>
+
+  <div class="body-wrap">
+
+    <!-- PULL QUOTE -->
+    <div class="pull-quote" style="margin-bottom:16px;">
+      <p>"Take a step back from 92507. Yes, I said it."</p>
+      <span class="attribution">This Month's Focus &nbsp;·&nbsp; Reassess the State of Your Practice</span>
+    </div>
+
+    <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+
+    <!-- 3-COLUMN BODY -->
+    <div class="page-columns">
+
+      <!-- COL 1: Letter opening + priorities -->
+      <div class="col">
+        <div class="section-label">From the President</div>
+        <h2 class="section-headline">A Message from Leadership</h2>
+        <p class="dropcap">Dear AAPPSPA Members, grab your coffee, tea or beverage of choice — it's time to get down to business.</p>
+        <p>I want to extend my sincere gratitude to each of you for the work you do every day. Whether you are operating as a solo practitioner or leading a multidisciplinary team, your commitment to serving clients and families while navigating the realities of running a business is both meaningful and demanding.</p>
+        <p>This year, my focus is centered on three priorities: strengthening business practices, supporting compliance and sustainability, and fostering a connected and engaged professional community.</p>
+        <p>To support this, Lauren and I will be sending a brief communication every two months designed to provide practical guidance relevant to private practice. These messages will include business strategies, policy reminders, financial considerations, and operational insights that can be implemented in both small and large practice settings.</p>
+
+        <div class="box">
+          <div class="box-title">2026 Priorities</div>
+          <ul>
+            <li>Strengthening business practices</li>
+            <li>Supporting compliance and sustainability</li>
+            <li>Fostering a connected, engaged professional community</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-divider"></div>
+
+      <!-- COL 2: Practice assessment bullets -->
+      <div class="col">
+        <div class="section-label">Business Review</div>
+        <h2 class="section-headline">Reassess Your Practice</h2>
+        <p>As we begin, take a moment this month to reassess the current state of your practice.</p>
+
+        <div class="box">
+          <div class="box-title">Business Perspective</div>
+          <p style="font-size:12px; margin-bottom:6px;">Review your service mix and determine whether your current balance of evaluations, treatment sessions, and group services aligns with both client needs and financial sustainability. Consider whether your pricing structure and payer contracts reflect current reimbursement trends and operational costs.</p>
+        </div>
+
+        <div class="box">
+          <div class="box-title">Operational Standpoint</div>
+          <p style="font-size:12px; margin-bottom:6px;">Evaluate staffing patterns and workload distribution. Solo practitioners may consider opportunities to streamline administrative processes through automation, while larger practices may benefit from reviewing productivity expectations and team structure.</p>
+        </div>
+
+        <div class="box-dark">
+          <div class="box-title">Policies &amp; Procedures</div>
+          <p style="font-size:12px; margin-bottom:6px;">Ensure that your HIPAA documentation, telepractice agreements, and intake processes are current. Confirm that documentation timelines are consistent with payer requirements and that your classification of employees and contractors aligns with current regulatory expectations.</p>
+        </div>
+      </div>
+
+      <div class="col-divider"></div>
+
+      <!-- COL 3: Closing + Interact guidelines -->
+      <div class="col">
+        <div class="section-label">Closing</div>
+        <h2 class="section-headline">Looking Forward</h2>
+        <p>Private practice requires not only clinical excellence, but also leadership, adaptability, and thoughtful decision-making. My goal this year is to ensure that AAPPSPA provides meaningful support in each of these areas.</p>
+        <p>Lauren, Vice President of AAPPSPA, and I are looking forward to working together this year to support you and strengthen this community.</p>
+        <p>I am honored to serve in this role and look forward to connecting with you throughout the year.</p>
+        <div class="signature">Warm regards,<br>Leann &amp; Lauren</div>
+
+        <hr class="thick" style="margin-top:16px;">
+
+        <div class="section-label">AAPPSPA Interact</div>
+        <h2 class="section-headline" style="margin-top:8px;">Respectful Communication &amp; Conduct</h2>
+        <p>AAPPSPA values respectful, inclusive, and professional dialogue. Members are expected to:</p>
+        <div class="box-accent">
+          <ul>
+            <li>Engage respectfully in all organizational communications (in person, online, and via email)</li>
+            <li>Listen actively and consider differing perspectives</li>
+            <li>Avoid personal attacks or inflammatory remarks</li>
+            <li>Follow the communication expectations for the Listserv (see FAQ link)</li>
+          </ul>
+        </div>
+        <p style="font-size:11.5px; font-style:italic; margin-top:4px;">Harassment, discrimination, or hostile behavior toward other members or collaborators will not be tolerated.</p>
+      </div>
+
+    </div><!-- end columns -->
+
+    <footer class="footer">
+      <p>AAPPSPA &nbsp;·&nbsp; The No-Show Chronicles &nbsp;·&nbsp; Vol. 1</p>
+      <div class="ornament" style="margin:0; font-size:14px; letter-spacing:4px;">✦</div>
+      <p style="text-align:right;">Published bi-monthly &nbsp;·&nbsp; Members only</p>
+    </footer>
+
+  </div>
+</article>
+</body>
+</html>
